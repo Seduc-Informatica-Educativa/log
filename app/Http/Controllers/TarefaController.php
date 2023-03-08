@@ -20,8 +20,12 @@ class TarefaController extends Controller
     }
     public function store(StoreTarefaRequest $request, Tarefa $tarefa)
     {
+        $input = $request->all();
         Tarefa::create($request->validated());
-        $this->create_log("Cadastrou", "Tarefa", $tarefa->id);
+        $nova_tarefa = Tarefa::create($input);
+        
+        $this->create_log("Cadastrou", "Tarefa", $nova_tarefa->id);
+
         return redirect()->route('tarefas.index')->with('evento.sucesso', 'Novo tarefa');
     }
     public function show(Tarefa $tarefa)

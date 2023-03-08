@@ -23,5 +23,4 @@ Route::middleware([
 
     //Log
     Route::get('logs/index',    [LogController::class, 'index'])->name('logs.index');
-    Route::get('logs/get_logs', [LogController::class, 'get_logs'])->name('log.get_logs');
 });
